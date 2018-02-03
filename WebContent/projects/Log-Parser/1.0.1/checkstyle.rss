@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<rss version="0.91">
+  <channel>
+    <title>General Log Parser - Checkstyle report</title>
+    <link>https://bitbucket.org/jrsofty/log-parsing-library</link>
+    <description>General Log Parser - Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>&#169;2017 Jason "JRSofty" Reed</copyright>
+    <item>
+      <title>File: 12,
+             Errors: 0,
+             Warnings: 0,
+             Infos: 0
+      </title>
+            <link>https://bitbucket.org/jrsofty/log-parsing-library/checkstyle.html</link>
+      <description>
+        <p>Click <a href="https://bitbucket.org/jrsofty/log-parsing-library/checkstyle.html">here</a> for the full Checkstyle report.</p>
+
+        <table summary="Files" boder="1">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px;"><abbr title="Info">I</abbr></th>
+              <th style="width:30px;"><abbr title="Warning">W</abbr></th>
+              <th style="width:30px;"><abbr title="Error">E</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>
+                  <a href="https://bitbucket.org/jrsofty/log-parsing-library/checkstyle.html#org.bitbucket.jrsofty.parser.logging.api.TokenMatcher.java">org/bitbucket/jrsofty/parser/logging/api/TokenMatcher.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://bitbucket.org/jrsofty/log-parsing-library/checkstyle.html#org.bitbucket.jrsofty.parser.logging.api.DefaultLogParser.java">org/bitbucket/jrsofty/parser/logging/api/DefaultLogParser.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://bitbucket.org/jrsofty/log-parsing-library/checkstyle.html#org.bitbucket.jrsofty.parser.logging.api.LogEntry.java">org/bitbucket/jrsofty/parser/logging/api/LogEntry.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://bitbucket.org/jrsofty/log-parsing-library/checkstyle.html#org.bitbucket.jrsofty.parser.logging.api.LogParserFactory.java">org/bitbucket/jrsofty/parser/logging/api/LogParserFactory.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://bitbucket.org/jrsofty/log-parsing-library/checkstyle.html#org.bitbucket.jrsofty.parser.logging.api.LogParser.java">org/bitbucket/jrsofty/parser/logging/api/LogParser.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://bitbucket.org/jrsofty/log-parsing-library/checkstyle.html#org.bitbucket.jrsofty.parser.logging.util.LogLineFormatReader.java">org/bitbucket/jrsofty/parser/logging/util/LogLineFormatReader.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://bitbucket.org/jrsofty/log-parsing-library/checkstyle.html#org.bitbucket.jrsofty.parser.logging.util.Tokenizer.java">org/bitbucket/jrsofty/parser/logging/util/Tokenizer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://bitbucket.org/jrsofty/log-parsing-library/checkstyle.html#org.bitbucket.jrsofty.parser.logging.api.IllegalClassException.java">org/bitbucket/jrsofty/parser/logging/api/IllegalClassException.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://bitbucket.org/jrsofty/log-parsing-library/checkstyle.html#org.bitbucket.jrsofty.parser.logging.util.LogLineFormatException.java">org/bitbucket/jrsofty/parser/logging/util/LogLineFormatException.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://bitbucket.org/jrsofty/log-parsing-library/checkstyle.html#org.bitbucket.jrsofty.parser.logging.util.ClassFieldMapper.java">org/bitbucket/jrsofty/parser/logging/util/ClassFieldMapper.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://bitbucket.org/jrsofty/log-parsing-library/checkstyle.html#org.bitbucket.jrsofty.parser.logging.api.LogElementMapping.java">org/bitbucket/jrsofty/parser/logging/api/LogElementMapping.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://bitbucket.org/jrsofty/log-parsing-library/checkstyle.html#org.bitbucket.jrsofty.parser.logging.api.TokenParseException.java">org/bitbucket/jrsofty/parser/logging/api/TokenParseException.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+        
+      </description>
+    </item>
+  </channel>
+</rss>
+

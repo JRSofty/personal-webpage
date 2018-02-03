@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ClassFieldMapper.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">General Log Parser</a> &gt; <a href="index.source.html" class="el_package">org.bitbucket.jrsofty.parser.logging.util</a> &gt; <span class="el_source">ClassFieldMapper.java</span></div><h1>ClassFieldMapper.java</h1><pre class="source lang-java linenums">package org.bitbucket.jrsofty.parser.logging.util;
+
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
+import java.util.HashMap;
+
+import org.bitbucket.jrsofty.parser.logging.api.IllegalClassException;
+import org.bitbucket.jrsofty.parser.logging.api.LogElementMapping;
+
+<span class="fc" id="L10">public class ClassFieldMapper {</span>
+<span class="fc" id="L11">  private final HashMap&lt;String, Integer&gt; instanceNumberingMap = new HashMap&lt;String, Integer&gt;();</span>
+
+  /**
+   * The method uses reflection to find all fields that are mapped with the
+   * {@link LogElementMapping} annotation then provides a HashMap mapping the field with the
+   * formatting token.
+   *
+   * @param clazz
+   *          the class.
+   * @return HashMap&amp;lt;String, String&amp;gt; containing the fields mapped to the formatting tokens.
+   * @throws IllegalClassException
+   *           when the class contains no fields annotated with LogElementMapping.
+   */
+  public HashMap&lt;String, String&gt; mapClassFields(final Class&lt;?&gt; clazz) throws IllegalClassException {
+<span class="fc bfc" id="L25" title="All 2 branches covered.">    if (null == clazz) {</span>
+<span class="fc" id="L26">      throw new IllegalClassException();</span>
+    }
+<span class="fc" id="L28">    final HashMap&lt;String, String&gt; map = new HashMap&lt;String, String&gt;();</span>
+<span class="fc" id="L29">    final Field[] fields = clazz.getDeclaredFields();</span>
+
+<span class="fc bfc" id="L31" title="All 2 branches covered.">    for (final Field field : fields) {</span>
+<span class="fc" id="L32">      final Annotation[] annotations = field.getAnnotations();</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">      for (final Annotation annotation : annotations) {</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        if (annotation instanceof LogElementMapping) {</span>
+<span class="fc" id="L35">          final String tokenName = this</span>
+<span class="fc" id="L36">              .convertToInstanceNumbering(((LogElementMapping) annotation).logToken());</span>
+<span class="fc" id="L37">          map.put(tokenName, field.getName());</span>
+        }
+      }
+    }
+
+<span class="fc bfc" id="L42" title="All 2 branches covered.">    if (map.size() == 0) {</span>
+<span class="fc" id="L43">      throw new IllegalClassException(</span>
+<span class="fc" id="L44">          clazz.getClass(), &quot; does not contain @LogElementMapping on fields.&quot;);</span>
+    }
+
+<span class="fc" id="L47">    return map;</span>
+  }
+
+  private String convertToInstanceNumbering(final String token) {
+<span class="fc" id="L51">    String result = null;</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">    if (this.instanceNumberingMap.containsKey(token)) {</span>
+<span class="fc" id="L53">      Integer value = this.instanceNumberingMap.get(token);</span>
+<span class="fc" id="L54">      value = value + 1;</span>
+<span class="fc" id="L55">      result = token + &quot;[&quot; + value + &quot;]&quot;;</span>
+<span class="fc" id="L56">      this.instanceNumberingMap.put(token, value);</span>
+<span class="fc" id="L57">    } else {</span>
+<span class="fc" id="L58">      this.instanceNumberingMap.put(token, 0);</span>
+<span class="fc" id="L59">      result = token + &quot;[0]&quot;;</span>
+    }
+
+<span class="fc" id="L62">    return result;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

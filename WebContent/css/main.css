@@ -1,0 +1,128 @@
+body{
+	color: #efefef;
+	background-color: black;
+}
+ul{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+a{
+	text-decoration: none;
+	color: #65D2E2;
+}
+
+section{
+	margin: 4rem 0;
+	padding: 4rem 0;
+}
+
+#about{
+	background-color: #efefef;
+	color: black;
+}
+
+#acknowledgements
+{
+	font-size: 1rem;
+	background-color: #696969;
+}
+
+
+.jumbotron{
+	background-image: url("../img/jumbotron-background-trans.png");
+	background-color: grey;
+	padding: 8rem;
+	text-shadow: black 0.1em 0.1em 0.2em;
+}
+
+.jumbotron h1{
+	font-size: 4rem;
+	font-weight: bold;
+	
+}
+
+.jumbotron p{
+	padding-top: 1rem;
+	font-size: 2rem;
+	font-weight:bold;
+}
+
+.project 
+{
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+	border: 1px solid white;
+	padding: 8px;
+	margin: 3px;
+}
+
+.project h3{
+	color: #65D2E2;
+}
+
+.project p{
+	text-align: left;
+}
+
+.learn-more{
+	display: block;
+	padding: 2px 8px;
+}
+
+.project a:hover{
+	text-decoration: none;
+}
+
+.project i{
+	font-size: 8em;
+	color: #65D2E2;
+}
+
+.navbar li{
+	color: #65D2E2;
+	display: block;
+	padding: 2px 8px 2px 8px;
+}
+
+.navbar li>i{
+	
+}
+.navbar li>a{
+	padding-right: 5px;
+}
+
+.navbar li:hover{
+	background-color: #65D2E2;
+	color: black;
+	text-decoration: none;
+}
+
+.navbar li:hover>a{
+	text-decoration:none;
+	color:black;
+}
+
+.navbar li:hover>a:hover{
+	text-decoration:none;
+	color:black;
+}
+
+.social-box
+{
+	list-style-type: none;
+	margin-top: 10px;
+	padding-left: 0;
+}
+
+.social-box li
+{
+	display: inline-block;
+	padding-right: 5px;
+	font-size: 3rem;
+}
+.card
+{
+	color: black;
+}
