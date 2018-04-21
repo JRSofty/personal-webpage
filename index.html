@@ -127,7 +127,7 @@
 			</div>
 		</section>
 		<script>
-			$.get('https://public-api.wordpress.com/rest/v1.1/sites/randomaccessbrain.wordpress.com/posts/?number=4&status=publish',function(data){
+			$.get('https://public-api.wordpress.com/rest/v1.1/sites/randomaccessbrain.wordpress.com/posts/?number=4&status=publish&category=projects',function(data){
 				var $postsSection = $('#posts-wrapper');
 				$.each(data.posts, function(index, post){
 					var postId = 'post-' + post.ID;
