@@ -29,7 +29,7 @@
 			<div class="container">
 				<ul class="navbar float-right">
 				 	<li><i class="fi-xnsuxl-home-solid"></i>&nbsp;<a href="#home">Welcome</a></li>
-				 	<li><i class="fi-xwluxl-computer-desktop-wide"></i>&nbsp;<a href="#projects">Projects</a></li>
+				 	<li><i class="fi-xnluxl-network"></i>&nbsp;<a href="#projects">Projects</a></li>
 				 	<li><i class="fi-ctluxl-wordpress"></i>&nbsp;<a href="#blog-posts">Recent Blog Posts</a></li>
 				 	<li><i class="fi-xwluxl-address-card-solid"></i>&nbsp;<a href="#about">About Me</a></li>
 				 	<li><i class="fi-xwsuxl-envelope-solid"></i>&nbsp;<a href="#contact">Contact</a></li>
@@ -132,29 +132,35 @@
 			</div>
 		</section>
 		<script>
-			$.get('https://public-api.wordpress.com/rest/v1.1/sites/randomaccessbrain.wordpress.com/posts/?number=4&status=publish&category=projects,tutorials,development',function(data){
+			$.get("./env/api.php", function(data){
 				var $postsSection = $('#posts-wrapper');
-				$.each(data.posts, function(index, post){
-					var postId = 'post-' + post.ID;
-					var $cardWrapper = $('<div>', {class:'col-md-3 d-flex align-items-stretch'});
-					var $card = $('<div>', {class:'card',id: postId});
-					var $cardBody = $('<div>',{class:'card-body'});
-					var $cardTitle = $('<h3>',{class:'card-title'});
-					$cardTitle.append(post.title);
-					$cardBody.append($cardTitle);
-					var $cardText = $('<p>', {class: 'card-text'});
-					var excerpt = post.excerpt.replace(/<\/?[^>]+>/gi, '');
-					$cardText.append(excerpt);
-					$cardBody.append($cardText);
-					var $moreButton = $('<a>',{class: 'card-link', href: post.URL});
-					$moreButton.text('Read more ...');
-					$cardBody.append($moreButton);
-					$card.append($cardBody);
-					$cardWrapper.append($card);
-					$postsSection.append($cardWrapper);
+				var addCnt = 0;
+				$.each(data, function(index,post){
+					if(addCnt >= 3){
+						return;
+					}
+					var postId = 'post-' + post.id;
+					var helpTag = $.inArray('help', post.tag_list);
+					if(helpTag == -1){
+						addCnt++;
+						var $cardWrapper = $('<div>', {class:'col-md-3 d-flex align-items-stretch'});
+						var $card = $('<div>', {class:'card',id: postId});
+						var $cardBody = $('<div>',{class:'card-body'});
+						var $cardTitle = $('<h3>',{class:'card-title'});
+						$cardTitle.append(post.title);
+						$cardBody.append($cardTitle);
+						var $cardText = $('<p>', {class: 'card-text'});
+						var description = post.description;
+						$cardText.append(description);
+						$cardBody.append($cardText);
+						var $moreButton = $('<a>',{class: 'card-link', href: post.url});
+						$moreButton.text('Read more ...');
+						$cardBody.append($moreButton);
+						$card.append($cardBody);
+						$cardWrapper.append($card);
+						$postsSection.append($cardWrapper);
+					}
 				});
-			}).fail(function(e){
-				 console.error(e);
 			});
 		</script>
 	</body>
