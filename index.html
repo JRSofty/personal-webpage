@@ -127,36 +127,7 @@
 			</div>
 		</section>
 		<script>
-			$.get("./env/api.php", function(data){
-				var $postsSection = $('#posts-wrapper');
-				var addCnt = 0;
-				$.each(data, function(index,post){
-					if(addCnt >= 3){
-						return;
-					}
-					var postId = 'post-' + post.id;
-					var helpTag = $.inArray('help', post.tag_list);
-					if(helpTag == -1){
-						addCnt++;
-						var $cardWrapper = $('<div>', {class:'col-md-3 d-flex align-items-stretch'});
-						var $card = $('<div>', {class:'card',id: postId});
-						var $cardBody = $('<div>',{class:'card-body'});
-						var $cardTitle = $('<h3>',{class:'card-title'});
-						$cardTitle.append(post.title);
-						$cardBody.append($cardTitle);
-						var $cardText = $('<p>', {class: 'card-text'});
-						var description = post.description;
-						$cardText.append(description);
-						$cardBody.append($cardText);
-						var $moreButton = $('<a>',{class: 'card-link', href: post.url});
-						$moreButton.text('Read more ...');
-						$cardBody.append($moreButton);
-						$card.append($cardBody);
-						$cardWrapper.append($card);
-						$postsSection.append($cardWrapper);
-					}
-				});
-			});
+			
 		</script>
 	</body>
 </html>
