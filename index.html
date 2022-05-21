@@ -73,9 +73,15 @@
 	</section>
 	<section id="blog-posts">
 		<div class="container" role="article">
-			<h2>Recent Blog Posts</h2>
+			<h2>Recent Blog Posts from <a href="https://jrsofty.hashnode.dev" target="_blank">Hashnode</a></h2>
 			<div class="row" id="posts-wrapper">
-				<!-- Location of article posts -->
+				<!-- Location of HashNode posts -->
+			</div>
+		</div>
+		<div class="container" role="article">
+			<h2>Recent Blog Posts from <a href="https://dev.to" target="_blank">DEV.to</a></h2>
+			<div class="row" id="dev-to-wrapper">
+				<!-- Location of Dev.to posts-->
 			</div>
 		</div>
 	</section>
@@ -142,34 +148,43 @@
 					return;
 				}
 				articles.forEach(article => {
-					if (cnt > 3) {
+					if (cnt > maxPosts) {
 						return;
 					}
-					let articlewrap = document.createElement("div");
-					articlewrap.setAttribute("class", "col-md-3 d-flex align-items-stretch");
-					let card = document.createElement("div");
-					card.setAttribute("id", 'hc-' + article.slug);
-					let cardBody = document.createElement("div");
-					cardBody.setAttribute("class", "card-body");
-					let cardTitle = document.createElement("h3");
-					cardTitle.setAttribute("class", "card-title");
-					cardTitle.innerText = article.title;
-					cardBody.appendChild(cardTitle);
-					let cardText = document.createElement("p");
-					cardText.setAttribute("class", "card-text");
-					cardText.innerText = article.brief;
-					cardBody.appendChild(cardText);
-					let moreButton = document.createElement("a");
-					moreButton.setAttribute("class", "card-link");
-					moreButton.href = 'https://jrsofty.hashnode.dev/' + article.slug;
-					moreButton.innerText = "Read more ...";
-					cardBody.appendChild(moreButton);
-					card.appendChild(cardBody);
-					articlewrap.appendChild(card);
+					let artId = 'hc-' + article.slug;
+					let artLink = 'https://jrsofty.hashnode.dev/' + article.slug;
+					let articlewrap = buildCard(artId, article.title, article.brief, artLink);
 					postwrapper.appendChild(articlewrap);
 					cnt++;
 				});
 			});
+
+		devto().then(result => {
+			let addCnt = 1;
+			let devtoPosts = document.getElementById("dev-to-wrapper");
+			if (result.length === 0) {
+				let devnoItems = document.createElement("h2");
+				devnoItems.innerText = 'Nothing to see at the moment ...';
+				devtoPosts.appendChild(devnoItems);
+				return;
+			}
+
+			result.forEach(postItem => {
+				if (addCnt > maxPosts) {
+					return;
+				}
+
+				var postId = 'dev-to-post-' + postItem.id;
+				var helpTag = $.inArray('help', postItem.tag_list);
+				if (helpTag == -1) {
+					let devtoPosts = document.getElementById("dev-to-wrapper");
+					addCnt++;
+					let devWrap = buildCard(postId, postItem.title, postItem.description, postItem.url);
+					devtoPosts.appendChild(devWrap);
+				}
+			});
+		});
+
 	</script>
 </body>
 
