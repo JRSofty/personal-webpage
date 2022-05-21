@@ -75,7 +75,7 @@
 		<div class="container" role="article">
 			<h2>Recent Blog Posts</h2>
 			<div class="row" id="posts-wrapper">
-				<h2>Nothing to see at the moment ...</h2>
+				<!-- Location of article posts -->
 			</div>
 		</div>
 	</section>
@@ -133,9 +133,18 @@
 		gql(GET_USER_ARTICLES, { page: 0 })
 			.then(result => {
 				const articles = result.data.user.publication.posts;
-				let cnt = 0;
+				let cnt = 1;
 				let postwrapper = document.getElementById("posts-wrapper");
+				if (articles.length === 0) {
+					let noItems = document.createElement("h2");
+					noItems.innerText = 'Nothing to see at the moment ...';
+					postwrapper.appendChild(noItems);
+					return;
+				}
 				articles.forEach(article => {
+					if (cnt > 3) {
+						return;
+					}
 					let articlewrap = document.createElement("div");
 					articlewrap.setAttribute("class", "col-md-3 d-flex align-items-stretch");
 					let card = document.createElement("div");
@@ -158,7 +167,7 @@
 					card.appendChild(cardBody);
 					articlewrap.appendChild(card);
 					postwrapper.appendChild(articlewrap);
-
+					cnt++;
 				});
 			});
 	</script>
