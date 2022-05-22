@@ -75,12 +75,14 @@
 		<div class="container" role="article">
 			<h2>Recent Blog Posts from <a href="https://jrsofty.hashnode.dev" target="_blank">Hashnode</a></h2>
 			<div class="row" id="posts-wrapper">
+				Nothing to see yet ...
 				<!-- Location of HashNode posts -->
 			</div>
 		</div>
 		<div class="container" role="article">
 			<h2>Recent Blog Posts from <a href="https://dev.to" target="_blank">DEV.to</a></h2>
 			<div class="row" id="dev-to-wrapper">
+				Nothing to see yet ...
 				<!-- Location of Dev.to posts-->
 			</div>
 		</div>
@@ -91,7 +93,7 @@
 			<div class="row">
 				<div class="col-md-3">
 					<div class="thumbnail">
-						<img src="img/me.jpg" class="img-thumbnail img-rounded">
+						<img src="img/me.jpg" class="img-thumbnail img-rounded" alt="A stylized avatar of me, created by Krishna Sadasivam. See acknowledgements below for details.">
 					</div>
 				</div>
 				<div class="col-md-9">
@@ -142,11 +144,9 @@
 				let cnt = 1;
 				let postwrapper = document.getElementById("posts-wrapper");
 				if (articles.length === 0) {
-					let noItems = document.createElement("h2");
-					noItems.innerText = 'Nothing to see at the moment ...';
-					postwrapper.appendChild(noItems);
 					return;
 				}
+				postWrapper.innerText = "";
 				articles.forEach(article => {
 					if (cnt > maxPosts) {
 						return;
@@ -163,12 +163,9 @@
 			let addCnt = 1;
 			let devtoPosts = document.getElementById("dev-to-wrapper");
 			if (result.length === 0) {
-				let devnoItems = document.createElement("h2");
-				devnoItems.innerText = 'Nothing to see at the moment ...';
-				devtoPosts.appendChild(devnoItems);
 				return;
 			}
-
+			devtoPosts.innerText = "";
 			result.forEach(postItem => {
 				if (addCnt > maxPosts) {
 					return;

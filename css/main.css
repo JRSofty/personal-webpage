@@ -1,5 +1,5 @@
 /**
-	This css written by Jason Reed Copyright 2017-2018. 
+	This css written by Jason Reed Copyright 2017-2022. 
 	This code may be used as is.
 **/
 body{
@@ -90,9 +90,6 @@ section{
 	padding: 2px 8px 2px 8px;
 }
 
-.navbar li>i{
-	
-}
 .navbar li>a{
 	padding-right: 5px;
 }
@@ -129,4 +126,8 @@ section{
 .card
 {
 	color: black;
+}
+.card-title
+{
+	border-bottom: 0.1rem solid black;
 }

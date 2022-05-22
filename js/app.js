@@ -1,3 +1,14 @@
+/**
+ *
+ * This Javascript is written by Jason Reed, except the gql function taken from https://catalins.tech/hashnode-api-how-to-display-your-blog-articles-on-your-portfolio-page
+ *
+ * Copyright 2017-2022.
+ * This code may be used as is.
+ *
+ *
+ *
+ */
+
 const GET_USER_ARTICLES = `
 query GetUserArticles($page: Int!){
   user(username: "jrsofty") {
@@ -33,15 +44,22 @@ async function gql(query, variables = {}) {
 
 async function devto() {
   const data = await fetch("https://dev.to/api/articles?username=jrsofty");
-  return await data.json();
+  return await data.json(); // dev.to requires an await to get the data. Not sure why though.
 }
 
+/**
+ * Let's not repeat ourselves shall we?
+ */
 function buildCard(id, title, content, link) {
   let cardwrapper = document.createElement("div");
-  cardwrapper.setAttribute("class", "col-md-3 d-flex align-items-stretch");
+  cardwrapper.setAttribute(
+    "class",
+    "col-md-3 d-flex align-items-stretch cardwrapper"
+  );
 
   let card = document.createElement("div");
   card.setAttribute("id", id);
+  card.setAttribute("class", "card");
 
   let cardBody = document.createElement("div");
   cardBody.setAttribute("class", "card-body");
