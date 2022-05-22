@@ -131,3 +131,7 @@ section{
 {
 	border-bottom: 0.1rem solid black;
 }
+.hidden 
+{
+	display:none;
+}
