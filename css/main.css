@@ -131,6 +131,11 @@ section{
 {
 	border-bottom: 0.1rem solid black;
 }
+.card-link
+{
+	color: black;
+}
+
 .hidden 
 {
 	display:none;
