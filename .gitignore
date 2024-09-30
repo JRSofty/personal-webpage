@@ -2,3 +2,4 @@
 /.project
 .settings
 /.pmd
+backend/conf/conf.php
