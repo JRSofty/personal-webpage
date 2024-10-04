@@ -10,7 +10,10 @@
         "api_response" => "api/api_response.php",
         "api_handler" => "api/api_handler.php",
         // BUSINESS
-        "version" => "business/version.php"
+        "version" => "business/version.php",
+        "user" => "business/user.php",
+        // DAO
+        "userDao" => "persist/userDao.php"
     ];
 
     spl_autoload_register(function ($class) use ($mapping) {
