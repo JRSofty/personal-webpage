@@ -5,7 +5,6 @@ CREATE TABLE IF NOT EXISTS `users` (
     `first_name` VARCHAR(255) NOT NULL,
     `password` VARCHAR(255) NOT NULL,
     `email` VARCHAR(255) NOT NULL,
-    `role` INT DEFAULT NULL,
     PRIMARY KEY (`id`),
     UNIQUE KEY `unique_user` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -19,10 +18,29 @@ CREATE TABLE IF NOT EXISTS `tokens` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS `articles` (
-    `id` BIGINT NOT NULL AUTO_INCREMENT,
+    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `user_id` BIGINT UNSIGNED NOT NULL,
     `title` VARCHAR(150) NOT NULL,
     `slug` VARCHAR(150) NOT NULL,
-    
+    `hook` TEXT DEFAULT NULL,
+    `content` LONGTEXT DEFAULT NULL,
+    `create_date` DATETIME DEFAULT,
+    `publication_date` DATETIME DEFAULT NULL,
+    `updated_date` DATETIME DEFAULT NULL,
     PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mbf;
+
+CREATE TABLE IF NOT EXISTS `tags` (
+    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `tag_name` VARCHAR(100) NOT NULL,
+    `description` TEXT NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mbf;
+
+CREATE TABLE IF NOT EXISTS `article_tags` (
+    `article_id` BIGINT UNSIGNED NOT NULL,
+    `tag_id` BIGINT UNSIGNED NOT NULL,
+    CONSTRAINT fk_article_id FOREIGN KEY (article_id) REFERENCES articles(id) ON DELETE CASCADE,
+    CONSTRAINT fk_tag_id FOREIGN KEY (tag_id) REFERENCES tags(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mbf;
 
