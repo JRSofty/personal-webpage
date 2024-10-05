@@ -1,0 +1,28 @@
+CREATE TABLE IF NOT EXISTS `users` (
+    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `username` VARCHAR(75) NOT NULL,
+    `last_name` VARCHAR(255) NOT NULL,
+    `first_name` VARCHAR(255) NOT NULL,
+    `password` VARCHAR(255) NOT NULL,
+    `email` VARCHAR(255) NOT NULL,
+    `role` INT DEFAULT NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `unique_user` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `tokens` (
+    `token` VARCHAR(50) NOT NULL,
+    `valid_to` DATETIME NOT NULL,
+    `user_id` BIGINT UNSIGNED DEFAULT NULL,
+    `ip` VARCHAR(15) NOT NULL,
+    UNIQUE KEY (`token`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `articles` (
+    `id` BIGINT NOT NULL AUTO_INCREMENT,
+    `title` VARCHAR(150) NOT NULL,
+    `slug` VARCHAR(150) NOT NULL,
+    
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mbf;
+
