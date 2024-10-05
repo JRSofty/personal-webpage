@@ -61,7 +61,12 @@
 
         private function loadFunctionMap(){
             $this->function_map = [
-                "version" => new api_registry("version", "getVersion", false, "GET")
+                "version"   => new api_registry("version", "getVersion", false, "GET"),
+                "newUser"   => new api_registry("user", "createUser", true, "POST"),
+                "editUser"  => new api_registry("user", "updateUser", true, "POST"),
+                "remUser"   => new api_registry("user", "deleteUser", true, "POST"),
+                "listUsers" => new api_registry("user", "listUsers", true, "GET"),
+                "getUser"   => new api_registry("user", "getUser", false, "GET") 
             ];
         }
 

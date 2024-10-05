@@ -5,6 +5,28 @@
         die;
     }
 
+    class user {
 
+        public function listUsers(){
+
+        }
+
+        public function getUser($data){
+            
+        }
+
+        public function createUser($data){
+
+        }
+
+        public function updateUser($data){
+
+        }
+
+        public function deleteUser($data){
+
+        }
+
+    }
     
 ?>

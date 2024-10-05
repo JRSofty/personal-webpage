@@ -7,13 +7,14 @@
     require_once("conf/conf.php");
 
     $mapping = [
-        "api_response" => "api/api_response.php",
-        "api_handler" => "api/api_handler.php",
+        "api_response"  => "api/api_response.php",
+        "api_handler"   => "api/api_handler.php",
         // BUSINESS
-        "version" => "business/version.php",
-        "user" => "business/user.php",
+        "version"       => "business/version.php",
+        "user"          => "business/user.php",
+        "feed"          => "business/feedBusiness.php",
         // DAO
-        "userDao" => "persist/userDao.php"
+        "userDao"       => "persist/userDao.php"
     ];
 
     spl_autoload_register(function ($class) use ($mapping) {
