@@ -10,6 +10,7 @@
         "api_response"  => "api/api_response.php",
         "api_handler"   => "api/api_handler.php",
         // BUSINESS
+        "auth"          => "business/auth.php",
         "version"       => "business/version.php",
         "user"          => "business/user.php",
         "feed"          => "business/feedBusiness.php",
