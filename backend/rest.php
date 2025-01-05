@@ -24,7 +24,20 @@
     $adminToken = false;
     $functionParams = "";
     if(isset($requestMethodArray["apiToken"])){$token = $requestMethodArray["apiToken"];}
+    if($token == "" && isset($_COOKIE["apiToken"])){
+        $token = $_COOKIE["apiToken"];
+    }
     if(isset($requestMethodArray["apiFunc"])){ $functionName = $requestMethodArray["apiFunc"];}
+    $functionParams = array();
+    foreach($requestMethodArray as $key => $value){
+        if($key != 'apiToken' && $key != 'apiFunc'){
+            $functionParams[$key] = $value;
+        }
+    }
+    $postBody = json_decode(file_get_contents("php://input"), true);
+    $functionParams["post_body"] = $postBody;
+    $functionParams["files"] = $_FILES;
+
 
     $cApiHandler = new api_handler();
     $res = $cApiHandler->callApiFunction($functionName, $functionParams, $requestMethod, $token);
