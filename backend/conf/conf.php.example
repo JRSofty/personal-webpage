@@ -5,4 +5,7 @@
         die;
     }
 
+    // Enter a string value used for the JWT validation
+    define("JWT_SECRET", "");
+
 ?>
