@@ -16,23 +16,23 @@ CREATE TABLE IF NOT EXISTS `articles` (
     `slug` VARCHAR(150) NOT NULL,
     `hook` TEXT DEFAULT NULL,
     `content` LONGTEXT DEFAULT NULL,
-    `create_date` DATETIME DEFAULT,
+    `create_date` DATETIME NOT NULL,
     `publication_date` DATETIME DEFAULT NULL,
     `updated_date` DATETIME DEFAULT NULL,
     PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mbf;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS `tags` (
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
     `tag_name` VARCHAR(100) NOT NULL,
     `description` TEXT NOT NULL,
     PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mbf;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS `article_tags` (
     `article_id` BIGINT UNSIGNED NOT NULL,
     `tag_id` BIGINT UNSIGNED NOT NULL,
     CONSTRAINT fk_article_id FOREIGN KEY (article_id) REFERENCES articles(id) ON DELETE CASCADE,
     CONSTRAINT fk_tag_id FOREIGN KEY (tag_id) REFERENCES tags(id) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mbf;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
