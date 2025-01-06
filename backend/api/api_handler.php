@@ -26,21 +26,13 @@
                     return $res;
                 }
 
-                // if($needToken == true){
-                //     if( $token == ""){
-                //         $res = api_response::getResponse(400);
-                //         $res["message"] = "apiToken failure likely in cookies.";
-                //         $res["cookie"] = $_COOKIE;
-                //         $res["request"] = $requestMethodArray;
-                //         $res["params"] = $functionParams;
-                //     }else{
-                //         $res = api_token::validate($token, $adminToken);
-                //     }
-                // }
-                // if($res["status"] !== 200){
-                //     return res;
-                // }
-
+                if($needToken == true){
+                    $res = $this->validateToken($token);
+                    if($res["status"] !== 200){
+                        return $res;
+                    }
+                }
+                
                 $cCommand = new $class();
                 $res = $cCommand->$func($apiParams);
             }
@@ -69,6 +61,20 @@
                 "listUsers" => new api_registry("user",     "listUsers",    true,   "GET"   ),
                 "getUser"   => new api_registry("user",     "getUser",      false,  "GET"   )
             ];
+        }
+
+        private function validateToken($token){
+            $res = api_response::getResponse(403);
+            if(!isset($token) || $token == ""){
+                $res["messsage"] = "Invalid Token";
+                return $res;
+            }
+            $tokenItems = explode(".", $token);
+            $check = $this->createSignature($tokenItems[0], $tokenItems[1]);
+            if($check == $tokenItems[2]){
+                $res = api_response::getResponse(200);
+            }
+            return $res;
         }
 
 

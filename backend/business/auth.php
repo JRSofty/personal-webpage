@@ -11,11 +11,27 @@
         
         // private $userDao = new userDao();
         public function loginUser($params){
+            $res = api_response::getResponse(400);
+            if(!isset($params["post_body"]) || null == $params["post_body"]){
+                $res["message"] = "Invalid Login Request (1)";
+                return $res;
+            }
+            $login = $params["post_body"];
+            
             $user = ["id"=>1, "username" => "testing", "last_name"=>"Dummy", "first_name"=>"Dummy", "email" => "dummy@email.com"];
             $token = $this->createToken($user);
             $res = api_response::getResponse(200);
             setCookie("apiToken", $token, time()+60*60*24);
             return $res;
+        }
+
+        private function validateUser($login){
+            $res = api_response::getResponse(400);
+            if(!isset($login["username"]) || !isset($login["secret"])){
+                $res["message"] = "Invalid Login Request (2)";
+                return $res;
+            }
+
         }
 
         private function createToken($user){
@@ -27,16 +43,6 @@
             $signature = $this->createSignature($encodedHeader, $encodedPayload);
             $token = "$encodedHeader.$encodedPayload.$signature";
             return $token;
-        }
-
-        public function validateToken($token){
-            $tokenItems = explode(".", $token);
-            $check = $this->createSignature($tokenItems[0], $tokenItems[1]);
-            $res = api_response::getResponse(403);
-            if($check == $tokenItems[2]){
-                $res = api_response::getResponse(200);
-            }
-            return $res;
         }
 
         private function base64_encode_url($string) {
