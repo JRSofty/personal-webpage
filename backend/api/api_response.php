@@ -31,6 +31,11 @@
                     $response["status"] = 403;
                     $response["message"] = "Invalid Token Access Not Allowed.";
                     break;
+                case 404:
+                    $response["success"] = false;
+                    $response["status"] = 404;
+                    $response["message"] = "Item not found";
+                    break;
                 case 405:
                     $response["success"] = false;
                     $response["status"] = 405;
@@ -43,7 +48,7 @@
                     break;
                 default:
                     $response["success"] = false;
-                    $response["status"] = 000;
+                    $response["status"] = 503;
                     $response["message"] ="Unknown application operation.";
                     $response["code"] = $statusCode;
             }
