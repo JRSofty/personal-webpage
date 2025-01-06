@@ -5,4 +5,12 @@
         die;
     }
 
+
+    class userDao extends abstractDao
+    {
+        public function __construct(){
+            $this->connect();
+        }
+    }
+
 ?>
