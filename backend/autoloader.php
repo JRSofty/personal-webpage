@@ -15,6 +15,7 @@
         "user"          => "business/user.php",
         "feed"          => "business/feedBusiness.php",
         // DAO
+        "abstractDao"   => "persist/abstractDao.php",
         "userDao"       => "persist/userDao.php"
     ];
 

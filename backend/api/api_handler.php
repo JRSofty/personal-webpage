@@ -27,12 +27,13 @@
                 }
 
                 if($needToken == true){
-                    $res = $this->validateToken($token);
+                    $res = $this->validateToken($adminToken);
                     if($res["status"] !== 200){
+                        // $res["cookies"] = $_COOKIE;
                         return $res;
                     }
                 }
-                
+
                 $cCommand = new $class();
                 $res = $cCommand->$func($apiParams);
             }
@@ -73,8 +74,21 @@
             $check = $this->createSignature($tokenItems[0], $tokenItems[1]);
             if($check == $tokenItems[2]){
                 $res = api_response::getResponse(200);
+            }else{
+                $res["message"] = "Token Validation Failed";
+                $res["token2"] = $tokenItems[2];
+                $res["check"] = $check;
             }
             return $res;
+        }
+
+        private function base64_encode_url($string) {
+            return str_replace(['+','/','='], ['-','_',''], base64_encode($string));
+        }
+
+        private function createSignature($encodedHeader, $encodedPayload){
+            $sig = hash_hmac("sha256", $encodedHeader . "." . $encodedPayload, JWT_SECRET, true);
+            return $this->base64_encode_url($sig);
         }
 
 

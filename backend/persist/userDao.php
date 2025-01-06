@@ -12,6 +12,25 @@
             $this->connect();
         }
 
+        public function listAllUsers(){
+            $query = "SELECT `id`, `username`, `last_name`, `first_name`, `email` FROM users";
+            $statement = $this->prepareStatement($query);
+            $result = api_response::getResponse(404);
+            try{
+                $statement->execute();
+                $users = $statement->fetchAll(PDO::FETCH_ASSOC);
+                $result = api_response::getResponse(200);
+                $result["users"] = $users;
+            }catch(Exception $e){
+                $result = api_response::getResponse(500);
+                $result["exception"] = $e->getMessage();
+            }finally{
+                $this->disconnect();
+            }
+            return $result;
+
+        }
+
         public function getUserByUsername($username){    
             $query = "SELECT `id`, `username`, `secret`, `last_name`, `first_name`, `email` FROM `users` WHERE `username` = :username";
             $params = ["username" => $username];

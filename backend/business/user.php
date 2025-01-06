@@ -8,7 +8,9 @@
     class user {
 
         public function listUsers(){
-
+            $dao = new userDao();
+            $res = $dao->listAllUsers();
+            return $res;
         }
 
         public function getUser($data){

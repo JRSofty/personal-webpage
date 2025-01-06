@@ -17,8 +17,11 @@
                 return $res;
             }
             $login = $params["post_body"];
-            
-            $user = ["id"=>1, "username" => "testing", "last_name"=>"Dummy", "first_name"=>"Dummy", "email" => "dummy@email.com"];
+            $valRes = $this->validateUser($login);
+            if($valRes["status"] != 200){
+                return $valRes;
+            }
+            $user = $valRes["user"];
             $token = $this->createToken($user);
             $res = api_response::getResponse(200);
             setCookie("apiToken", $token, time()+60*60*24);
@@ -31,6 +34,23 @@
                 $res["message"] = "Invalid Login Request (2)";
                 return $res;
             }
+            $dao = new userDao();
+            $res = $dao->getUserByUsername($login["username"]);
+            if($res["status"] != 200){
+                return $res;
+            }
+            if(!isset($res["user"])){
+                $res = api_response::getResponse(403);
+                $res["message"] = "Login failed";
+                return $res;
+            }
+            $dbUser = $res["user"];
+            if(!password_verify($login["secret"], $dbUser["secret"])){
+                $res = api_response::getResponse(403);
+                $res["message"] = "Login failed";
+                return $res;
+            }
+            return $res;
 
         }
 
@@ -56,6 +76,10 @@
         private function createSignature($encodedHeader, $encodedPayload){
             $sig = hash_hmac("sha256", $encodedHeader . "." . $encodedPayload, JWT_SECRET, true);
             return $this->base64_encode_url($sig);
+        }
+
+        private function hashPass($password){
+            return password_hash($password, PASSWORD_DEFAULT);
         }
 
     }
