@@ -60,7 +60,15 @@
                 "editUser"  => new api_registry("user",     "updateUser",   true,   "POST"  ),
                 "remUser"   => new api_registry("user",     "deleteUser",   true,   "GET"   ),
                 "listUsers" => new api_registry("user",     "listUsers",    true,   "GET"   ),
-                "getUser"   => new api_registry("user",     "getUser",      false,  "GET"   )
+                "getUser"   => new api_registry("user",     "getUser",      false,  "GET"   ),
+                "saveArt"   => new api_registry("article",  "saveArticle",  true,   "POST"  ),
+                "delArt"    => new api_registry("article",  "deleteArticle",true,   "GET"   ),
+                "getArt"    => new api_registry("article",  "getArticle",   false,  "GET"   ),
+                "listArt"   => new api_registry("article",  "listArticle",  false,  "GET"   ),
+                "newTag"    => new api_registry("tag",      "createTag",    true,   "POST"  ),
+                "viewTag"   => new api_registry("article",  "listByTag",    false,  "GET"   ),
+                "delTag"    => new api_registry("tag",      "deleteTag",    true,   "GET"   ),
+                "editTag"   => new api_registry("tag",      "editTag",      true,   "POST"  )
             ];
         }
 
