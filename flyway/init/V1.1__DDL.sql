@@ -26,7 +26,8 @@ CREATE TABLE IF NOT EXISTS `tags` (
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
     `tag_name` VARCHAR(100) NOT NULL,
     `description` TEXT NOT NULL,
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `unique_tag` (`tag_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS `article_tags` (
@@ -36,3 +37,14 @@ CREATE TABLE IF NOT EXISTS `article_tags` (
     CONSTRAINT fk_tag_id FOREIGN KEY (tag_id) REFERENCES tags(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE IF NOT EXISTS `article_comments` (
+    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `article_id` BIGINT UNSIGNED NOT NULL,
+    `reply_id` BIGINT UNSIGNED DEFAULT NULL,
+    `content` LONGTEXT DEFAULT NULL,
+    `IP` VARCHAR(25) NOT NULL,
+    `create_date` DATETIME NOT NULL,
+    `approved` TINYINT DEFAULT 0,
+    PRIMARY KEY (`id`),
+    CONSTRAINT fk_ac_aid FOREIGN KEY (article_id) REFERENCES articles(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
