@@ -14,9 +14,13 @@
         "version"       => "business/version.php",
         "user"          => "business/user.php",
         "feed"          => "business/feedBusiness.php",
+        "article"       => "business/article.php",
+        "tag"           => "business/tag.php",
         // DAO
         "abstractDao"   => "persist/abstractDao.php",
-        "userDao"       => "persist/userDao.php"
+        "userDao"       => "persist/userDao.php",
+        "tagDao"        => "persist/tagDao.php",
+        "articleDao"    => "persist/articleDao.php"
     ];
 
     spl_autoload_register(function ($class) use ($mapping) {
