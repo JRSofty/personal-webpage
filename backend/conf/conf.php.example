@@ -14,4 +14,6 @@
     define("CONST_DB_CHAR", "");
     define("CONST_DB_USER", "");
     define("CONST_DB_PASS", "");
+
+    define("CONST_IMAGE_PATH", "");
 ?>
