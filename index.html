@@ -144,52 +144,6 @@
 			<p>The source code used on this website is available for viewing at <a href="https://github.com/JRSofty/personal-webpage">GitHub</a>.</p>
 		</div>
 	</section>
-	<script>
-		gql(GET_USER_ARTICLES, { page: 0 })
-			.then(result => {
-				const articles = result.data.user.publication.posts;
-				let cnt = 1;
-				let postwrapper = document.getElementById("posts-wrapper");
-				if (articles.length === 0) {
-					return;
-				}
-				postwrapper.innerText = "";
-				articles.forEach(article => {
-					if (cnt > maxPosts) {
-						return;
-					}
-					let artId = 'hc-' + article.slug;
-					let artLink = 'https://jrsofty.hashnode.dev/' + article.slug;
-					let articlewrap = buildCard(artId, article.title, article.brief, artLink);
-					postwrapper.appendChild(articlewrap);
-					cnt++;
-				});
-			});
-
-		devto().then(result => {
-			let addCnt = 1;
-			let devtoPosts = document.getElementById("dev-to-wrapper");
-			if (result.length === 0) {
-				return;
-			}
-			devtoPosts.innerText = "";
-			result.forEach(postItem => {
-				if (addCnt > maxPosts) {
-					return;
-				}
-
-				var postId = 'dev-to-post-' + postItem.id;
-				var helpTag = $.inArray('help', postItem.tag_list);
-				if (helpTag == -1) {
-					let devtoPosts = document.getElementById("dev-to-wrapper");
-					addCnt++;
-					let devWrap = buildCard(postId, postItem.title, postItem.description, postItem.url);
-					devtoPosts.appendChild(devWrap);
-				}
-			});
-		});
-
-	</script>
 </body>
 
 </html>

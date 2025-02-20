@@ -1,0 +1,1 @@
+INSERT INTO `users` (`username`, `last_name`, `first_name`, `secret`, `email`) VALUES ('dummy_user', 'user', 'dummy', '$2a$12$z4VIj7WBWvX4yg.gXX1ohu3qV6ktj/NYzBavQagBhxVZbu6rUZzWa', 'dummy@email.com');
