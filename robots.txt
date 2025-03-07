@@ -161,6 +161,7 @@ User-agent: Text Blaze
 User-agent: TextCortex
 User-agent: The Knowledge AI
 User-agent: Timpibot
+User-agent: Twitterbot
 User-agent: VelenPublicWebCrawler
 User-agent: Vidnami AI
 User-agent: WebChatGPT
