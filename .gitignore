@@ -2,3 +2,5 @@
 /.project
 .settings
 /.pmd
+backend/conf/conf.php
+phpinfo.php
